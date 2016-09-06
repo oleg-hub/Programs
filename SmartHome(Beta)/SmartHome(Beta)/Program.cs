@@ -16,12 +16,10 @@ namespace SmartHome_Beta_
             Fridge myFridge = new Fridge();
             LoudSpeakers myLoudspeakers = new LoudSpeakers(false, 15);
             TV myTV = new TV(false, 0);
-
-
+            
             while (true)
             {
                 Console.Clear();
-
                 Console.WriteLine("Choose device");
                 Console.WriteLine("1 - Фен");
                 Console.WriteLine("2 - Обогрев квартиры");
@@ -56,24 +54,15 @@ namespace SmartHome_Beta_
                     case 'x':
                     case 'X':
                         return;
-
-
-
-
                 }
             }
         }
-
-
-
-
 
         private static void ShowHairDryerMenu(HairDryer hairDryer)
         {
             while (true)
             {
                 Console.Clear();
-
                 Console.WriteLine("Hair Dryer Menu:");
                 Console.WriteLine(hairDryer.Info() + "\n");
                 Console.WriteLine("Нажмите клавишу для выполнения действия:");
@@ -115,7 +104,6 @@ namespace SmartHome_Beta_
             while (true)
             {
                 Console.Clear();
-
                 Console.WriteLine("Heating Menu:");
                 Console.WriteLine(heating.Info() + "\n");
                 Console.WriteLine("Нажмите клавишу для выполнения действия:");
@@ -161,7 +149,6 @@ namespace SmartHome_Beta_
                     case 'X':
                         return;
                 }
-
             }
         }
 
@@ -177,8 +164,6 @@ namespace SmartHome_Beta_
                     fstream.Read(array, 0, array.Length);
                     // Декодируем байты в строку
                     string textFromFile = System.Text.Encoding.Default.GetString(array);
-
-
                     Console.Clear();
                     Console.WriteLine(textFromFile + "\n");
                     Console.WriteLine("Нажмите клавишу для выполнения действия:");
@@ -189,7 +174,7 @@ namespace SmartHome_Beta_
                     Console.WriteLine("5 - Сильная заморозка");
                     Console.WriteLine("\nx - exit to main menu");
                 }
-
+                
                 char key = Console.ReadKey().KeyChar;
                 switch (key)
                 {
@@ -228,7 +213,6 @@ namespace SmartHome_Beta_
             while (true)
             {
                 Console.Clear();
-
                 Console.WriteLine("Loudspeakers Menu:");
                 Console.WriteLine(loudspeakers.Info() + "\n");
                 Console.WriteLine("Нажмите клавишу для выполнения действия:");
@@ -260,6 +244,7 @@ namespace SmartHome_Beta_
                 }
             }
         }
+        
         private static void ShowTVMenu(TV tv)
         {
             while (true)
@@ -296,7 +281,6 @@ namespace SmartHome_Beta_
                         return;
                 }
             }
-
         }
     }
 }
