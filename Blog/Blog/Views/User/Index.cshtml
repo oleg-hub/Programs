@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Blog.Models.Article>
+
+<div>
+    <h3>Блог</h3>
+    <br />
+</div>
+
+<table class="distance">
+
+    @foreach (var a in Model)
+            {
+        <tr>
+            <td><p>@a.Name</p></td>
+            <td><p>@a.PublicationTime</p></td>
+            <td><p><a href="/User/Read/@a.Id">Читать</a></p></td>
+        </tr>
+    }
+</table>
+
+
+
+
