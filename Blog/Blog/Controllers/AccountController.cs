@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Blog.Models;
+using Blog.Web.Models;
 
-namespace Blog.Controllers
+namespace Blog.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
