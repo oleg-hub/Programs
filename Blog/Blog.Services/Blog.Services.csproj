@@ -77,12 +77,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleService.cs" />
+    <Compile Include="CommentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.DataAccess\Blog.DataAccess.csproj">
       <Project>{61c9c14a-2d40-4288-a640-1a475fedefbd}</Project>
       <Name>Blog.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.ViewModels\Blog.ViewModels.csproj">
+      <Project>{2e7436d1-07d5-4dc4-af5b-a869e34bcb50}</Project>
+      <Name>Blog.ViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Blog.Entities.csproj">
       <Project>{594b5815-25c6-47d2-b1d0-0946c7bd7d16}</Project>

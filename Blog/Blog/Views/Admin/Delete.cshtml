@@ -1,4 +1,4 @@
-﻿@model Blog.Web.Models.Article
+﻿@model Blog.ViewModels.ArticleViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -13,27 +13,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Article.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Article.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Article.Text)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Text)
+            @Html.DisplayFor(model => model.Article.Text)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PublicationTime)
+            @Html.DisplayNameFor(model => model.Article.CreationDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PublicationTime)
+            @Html.DisplayFor(model => model.Article.CreationDate)
         </dd>
 
     </dl>

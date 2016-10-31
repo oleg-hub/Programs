@@ -20,12 +20,13 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 650px;
 }
 
 .footer {
     text-align: center;
 }
-.distance{
-    border-spacing: 19px 11px;
+
+.distance {
+    border-spacing: 80px 14px;
 }

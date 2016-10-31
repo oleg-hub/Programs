@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
+    <Compile Include="ArticleDbInitializer.cs" />
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="CommentRepository.cs" />

@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Blog.DataAccess
 {
-    class CommentRepository : BaseRepository<Comment>
+   public class CommentRepository : BaseRepository<Comment>
     {
         public CommentRepository(ApplicationContext context) : base(context)
         {
-
         }
     }
 }

@@ -7,121 +7,101 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Web.Models;
+using Blog.Entities;
+using Blog.DataAccess;
+using Blog.Services;
+using Blog.ViewModels;
 
 namespace Blog.Web.Controllers
 {
     public class AdminController : Controller
     {
-        //private BlogContext db = new BlogContext();
+        ArticleService articleService = new ArticleService();
+        ArticleViewModel view = new ArticleViewModel();
 
-        //// GET: Admin
-        //public ActionResult Index()
-        //{
-        //    return View(db.Articles.ToList());
-        //}
+        public ActionResult Index()
+        {
+        //    view.Articles = articleService.GetArticles();
+            return View(view);
+        }
 
-        //// GET: Admin/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Article article = db.Articles.Find(id);
-        //    if (article == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(article);
-        //}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            view.Article = articleService.Get(id);
+            if (view == null)
+            {
+                return HttpNotFound();
+            }
+            return View(view);
+        }
 
-        //// GET: Admin/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //// POST: Admin/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Name,Text,PublicationTime")] Article article)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Articles.Add(article);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Article article)
+        {
+            if (ModelState.IsValid)
+            {
+                articleService.Create(article);
+                return RedirectToAction("Index");
+            }
+            return View(view.Article);
+        }
 
-        //    return View(article);
-        //}
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            view.Article = articleService.Get(id);
+            if (view == null)
+            {
+                return HttpNotFound();
+            }
+            return View(view);
+        }
 
-        //// GET: Admin/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Article article = db.Articles.Find(id);
-        //    if (article == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(article);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Article article)
+        {
+            if (ModelState.IsValid)
+            {
+                articleService.Update(article);
+                return RedirectToAction("Index");
+            }
+            return View(view);
+        }
 
-        //// POST: Admin/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Name,Text,PublicationTime")] Article article)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(article).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(article);
-        //}
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+           view.Article = articleService.Get(id);
+            if (view == null)
+            {
+                return HttpNotFound();
+            }
+            return View(view);
+        }
 
-        //// GET: Admin/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Article article = db.Articles.Find(id);
-        //    if (article == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(article);
-        //}
-
-        //// POST: Admin/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Article article = db.Articles.Find(id);
-        //    db.Articles.Remove(article);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+             articleService.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }

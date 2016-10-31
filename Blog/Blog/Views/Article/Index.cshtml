@@ -1,0 +1,19 @@
+﻿@model List<Blog.ViewModels.ArticleViewModel>
+
+<div>
+    <h3>Блог</h3>
+    <br />
+</div>
+
+<table class="distance">
+
+
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td><p>@a..Title</p></td>
+            <td><p>@a..CreationDate</p></td>
+            <td><p><a href="/Article/Read/@a.Article.Id">Читать</a></p></td>
+        </tr>
+    }
+</table>

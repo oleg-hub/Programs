@@ -169,7 +169,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,7 +213,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -233,17 +234,28 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Read.cshtml" />
+    <Content Include="Views\Article\Read.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.DataAccess\Blog.DataAccess.csproj">
+      <Project>{61c9c14a-2d40-4288-a640-1a475fedefbd}</Project>
+      <Name>Blog.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Services\Blog.Services.csproj">
       <Project>{7700edf7-908f-4422-84db-a8c326e7c556}</Project>
       <Name>Blog.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.ViewModels\Blog.ViewModels.csproj">
+      <Project>{2e7436d1-07d5-4dc4-af5b-a869e34bcb50}</Project>
+      <Name>Blog.ViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Blog.Entities.csproj">
       <Project>{594b5815-25c6-47d2-b1d0-0946c7bd7d16}</Project>

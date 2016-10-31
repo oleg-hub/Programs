@@ -11,7 +11,6 @@ namespace Blog.DataAccess
     {
         public ArticleRepository(ApplicationContext context) : base (context)
         {
-            
         }
     }
 }
