@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/admin-style.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo.common.min.css" rel="stylesheet" />
+    <link rel="stylesheet" src="~/Content/kendo.common-material.min.css" />
+    <link rel="stylesheet" src="~/Content/kendo.material.min.css" />
+    <link rel="stylesheet" src="~/Content/kendo.material.mobile.min.css" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/kendo.all.min.js"></script>
+</head>
+<body>
+   
+    <div class="container body-content">
+        <div class="col-md-12 img">
+            <a href="~/Article/Index"><img src="~/Content/Bootstrap/banner-news.jpg" alt="News" /></a>
+            </div>
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

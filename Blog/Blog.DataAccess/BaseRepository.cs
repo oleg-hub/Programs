@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Blog.DataAccess
 {
-    public class BaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> where TEntity : BaseEntity
     {
         public DbContext Context { get; private set; }
         public DbSet<TEntity> dbSet;
@@ -43,7 +44,6 @@ namespace Blog.DataAccess
             {
                 return orderBy(query).ToList();
             }
-            else
             {
                 return query.ToList();
             }
@@ -58,7 +58,7 @@ namespace Blog.DataAccess
         {
             dbSet.Add(entity);
         }
-
+        
         public virtual void Delete(object id)
         {
             TEntity entityToDelete = dbSet.Find(id);

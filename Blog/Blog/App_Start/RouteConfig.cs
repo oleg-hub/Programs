@@ -12,7 +12,8 @@ namespace Blog.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(name: "Admin", url: "Admin", defaults: new { controller = "Account", action = "Login" });
+            routes.MapRoute(name: "Admin2", url: "Admin/PageForEdit", defaults: new { controller = "Admin", action = "Index" });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

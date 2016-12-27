@@ -1,0 +1,26 @@
+﻿@model Blog.ViewModels.EntitiesViewModels
+@{
+    Layout = null;
+}
+
+@foreach (var c in Model.Comments)
+            {
+    <hr class="line">
+    <div class="info">
+        <div class="col-xs-11 col-sm-11 col-md-11">
+        <h5>@c.UserName</h5>
+    </div>
+                @using (Ajax.BeginForm("DeleteComment", new AjaxOptions { UpdateTargetId = "listOfComments" }))
+                {
+                    <input type="hidden" value="@c.Id" name="id" />
+                    <input type="hidden" value="@c.Article.Id" name="ArticleId" />
+                    <div class="col-md-1">
+                        <input type="submit" value="X" class="btn-default" />
+                    </div>
+                }
+                <span><i class="fa fa-calendar"></i> @c.CreationDate</span>
+            </div>
+        <div class="wrap-vid">
+            <p> @c.Text</p>
+        </div>
+}

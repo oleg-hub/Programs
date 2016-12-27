@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Blog.Web.Helper;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Blog.Web
@@ -8,6 +9,7 @@ namespace Blog.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new LocalizationAttribute("ru-Ru"), 0);
         }
     }
 }

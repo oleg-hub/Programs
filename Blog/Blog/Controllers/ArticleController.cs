@@ -1,49 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Blog.Web.Models;
 using Blog.Entities;
 using Blog.Services;
 using Blog.ViewModels;
+using Blog.Web.Helper;
 
 namespace Blog.Web.Controllers
 {
     public class ArticleController : Controller
-    {
-        CommentService commentService = new CommentService();
-        ArticleService articleService = new ArticleService();
 
+    {
+        CommentService commentService;
+        ArticleService articleService;
+        public ArticleController()
+        {
+            commentService = new CommentService();
+            articleService = new ArticleService();
+        }
         public ActionResult Index()
         {
-            List<Article> articleList = articleService.GetArticles().ToList();
-            List<ArticleViewModel> articleViewModelList = new List<ArticleViewModel>();
+            List<Article> articleList = articleService.GetArticles();
+            List<EntitiesViewModels> articleViewModelList = new List<EntitiesViewModels>();
             foreach (var article in articleList)
             {
-                ArticleViewModel model = new ArticleViewModel { Article = article };
+                EntitiesViewModels model = new EntitiesViewModels { Article = article };
                 articleViewModelList.Add(model);
             }
             return View(articleViewModelList);
         }
-        [HttpGet]
-        public ActionResult Read(int id)
-        {
-            ArticleViewModel viewModel = new ArticleViewModel();
-            viewModel.Article = articleService.Get(id);
 
-            //List<Comment> comments = articleService.GetComments(id);
-            //viewModel.Comments.AddRange(comments);
-            return View(viewModel);
-        }
-        [HttpPost]
-        public ActionResult Read(ArticleViewModel model)
+        public ActionResult ReadArticle(string id)
         {
-           Article article = articleService.Get(model.Article.Id);
-            Comment comment = new Comment { UserName = model.UserName, Text = model.Text, Article = article };
-            commentService.Create(comment);
-            return RedirectToAction("Index");
-            //    return RedirectToAction("Read/{0}", comment.Article.Id);
+            EntitiesViewModels model = new EntitiesViewModels();
+            model.Article = articleService.GetArticleByID(id);
+            model.Comments = commentService.GetComments(id);
+            return View(model);
+        }
+
+        public ActionResult AddComment(EntitiesViewModels model)
+        {
+            if (model.UserName != null && model.Text != null)
+            {
+                commentService.AddNewComment(model);
+            }
+            model.Comments = commentService.GetComments(model.Article.Id);
+            return PartialView(model);
+
+        }
+
+        public ActionResult DeleteComment(string id, string articleId)
+        {
+            EntitiesViewModels model = new EntitiesViewModels();
+            commentService.DeleteComment(id);
+            model.Comments = commentService.GetComments(articleId);
+            return PartialView("AddComment", model);
         }
     }
 }

@@ -1,0 +1,145 @@
+﻿@media (min-width: 980px) {
+    .title {
+        width: 45%;
+    }
+
+    input,
+    select
+     {
+        max-width: 60%;
+    }
+
+     .text-width {
+        width: 87%;
+    }
+
+.textarea {
+    width: 60%;
+}
+.form-control,
+.col-xs-5{
+    width:100%;
+    /*padding-left: 18%;*/
+}
+
+}
+
+@media (min-width: 760px) and (max-width: 979px) {
+
+    .inbox-wrapper .inbox-left {
+        width: 30%;
+    }
+
+    .inbox-wrapper .inbox-right {
+        width: 70%;
+    }
+
+
+    select,
+    textarea {
+        max-width: 60%;
+    }
+
+    .text-width {
+        width: 100%;
+    }
+    
+.textarea {
+    width: 75%;
+}
+.form-control,
+.col-xs-5{
+    width:100%;
+    padding-left: 2%;
+}
+
+}
+
+
+@media (max-width: 759px) {
+
+    h4 {
+        font-size: 100%;
+        font-weight: bold;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+     select,
+    textarea {
+       width: 100%;
+    }
+
+    .text-width {
+        width: 100%;
+    }
+        .dateright{
+         font-size: 0;
+        overflow: hidden;
+    }
+        
+.textarea {
+    width: 75%;
+}
+.form-control,
+.col-xs-5{
+    width:100%;
+    padding-left: 2%;
+}
+}
+
+@media (max-width:360px) {
+
+
+    title {
+        font-size: 110%;
+        font-weight: bold;
+    }
+
+    .date, .topname {
+        font-size: 0;
+        overflow: hidden;
+    }
+
+    .btn, .btn-info {
+        padding: 3%;
+        text-align: right;
+    }
+
+    .col-xs-12 {
+        margin: 0;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+    img {
+        margin-bottom: 8%;
+    }
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    .text-width {
+        width: 100%;
+    }
+    .dateright{
+         font-size: 0;
+        overflow: hidden;
+    }
+    
+.textarea {
+    width: 75%;
+}
+.form-control,
+.col-xs-5{
+    width:100%;
+    padding-left: 5%;
+}
+}

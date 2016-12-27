@@ -1,0 +1,79 @@
+﻿.btn-lg,
+.btn, .btn-success {
+    margin-bottom: 90px;
+}
+
+.bold-font {
+    font: bold;
+}
+
+img {
+    width: 110%;
+    margin-bottom: 3%;
+}
+
+.text,
+.date {
+    overflow: hidden;
+}
+
+#example {
+    padding-top: 3%;
+}
+
+
+.tabs {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tab {
+    /*position: absolute;*/ /* Абсолютное позиционирование */
+    visibility: hidden;
+    z-index: 10;
+    height: 0px;
+}
+
+.tabs:target + .tab {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tabsLink a {
+    margin-left: 1%;
+    background-color: #478CFB;
+    padding: 5px;
+    font: bold 12pt "Trebuchet MS", tahoma, verdana, arial narrow, arial;
+    color: #fff;
+    text-decoration: none;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.form-group {
+    margin-left: 100px;
+}
+
+.btn-danger {
+    padding: 0;
+   
+}
+
+.btn-primary {
+    margin-top: 5%;
+}
+.row{
+    margin-bottom:1%;
+}
+.form-control{
+    min-width: 150px;
+}
+.textarea{
+    text-align: left;
+}
+
+

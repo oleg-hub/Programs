@@ -1,11 +1,8 @@
 ﻿using Blog.DataAccess;
 using Blog.Entities;
-using System;
+using Blog.ViewModels;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Services
 {
@@ -13,36 +10,43 @@ namespace Blog.Services
     {
         ArticleRepository articleRepository;
         CommentRepository commentRepository;
+        ApplicationContext context;
         public ArticleService()
         {
-            articleRepository = new ArticleRepository(new ApplicationContext());
-            commentRepository = new CommentRepository(new ApplicationContext());
+            context = new ApplicationContext();
+            articleRepository = new ArticleRepository(context);
+            commentRepository = new CommentRepository(context);
         }
-        public IEnumerable<Article> GetArticles()
+        public List<Article> GetArticles()
         {
-            return articleRepository.Get();
+            return articleRepository.Get().OrderByDescending(c => c.CreationDate).ToList();
         }
-        public List<Comment> GetComments(int articleId)
+        public List<ArticleAdminItemViewModel> GetKendoArticles()
         {
-            return commentRepository.Get().Where(x => x.Article.Id == articleId).ToList();
+            return articleRepository.Get().OrderByDescending(c => c.CreationDate)
+                .Select(x => new ArticleAdminItemViewModel
+                {
+                    CreationDate = x.CreationDate.ToShortDateString(),
+                    Id = x.Id,
+                    Text = x.Text,
+                    Title = x.Title
+                }).ToList();
         }
-        public Article Get(int? id)
+        public Article GetArticleByID(string id)
         {
             return articleRepository.GetByID(id);
         }
-        public void Create(Article article)
+        public void AddNewArticle(Article article)
         {
-            article.CreationDate = DateTime.Now;
             articleRepository.Insert(article);
             articleRepository.Save();
         }
-        public void Update(Article article)
+        public void UpdateArticle(Article article)
         {
-            article.CreationDate = DateTime.Now;
             articleRepository.Update(article);
             articleRepository.Save();
         }
-        public void Delete(int id)
+        public void DeleteArticle(string id)
         {
             articleRepository.Delete(id);
             articleRepository.Save();

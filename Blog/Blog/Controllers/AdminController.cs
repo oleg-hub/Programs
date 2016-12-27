@@ -1,106 +1,115 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Blog.Web.Models;
 using Blog.Entities;
-using Blog.DataAccess;
 using Blog.Services;
 using Blog.ViewModels;
+using Blog.Web.Models;
+using System.Web.Security;
+using Blog.DataAccess;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Blog.Web.Helper;
 
 namespace Blog.Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        ArticleService articleService = new ArticleService();
-        ArticleViewModel view = new ArticleViewModel();
+        ArticleService articleService;
+        AccountService accountService;
+        EntitiesViewModels view;
+        RegisterViewModel model;
+        public AdminController()
+        {
+            articleService = new ArticleService();
+            accountService = new AccountService();
+            view = new EntitiesViewModels();
+            model = new RegisterViewModel();
 
+        }
         public ActionResult Index()
         {
-        //    view.Articles = articleService.GetArticles();
-            return View(view);
+            model.ApplicationUsers = accountService.GetListAdmins();
+            return View(model);
         }
 
-        public ActionResult Details(int? id)
+        public JsonResult GetAllArticle()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            view.Article = articleService.Get(id);
-            if (view == null)
-            {
-                return HttpNotFound();
-            }
-            return View(view);
+            var articleList = articleService.GetKendoArticles();
+            return Json(articleList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllAdmin()
+        {
+            var adminList = accountService.GetKendoAdmins();
+            return Json(adminList, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article)
         {
-            if (ModelState.IsValid)
+            if (article.Title != null && article.Text != null)
             {
-                articleService.Create(article);
+                articleService.AddNewArticle(article);
                 return RedirectToAction("Index");
             }
             return View(view.Article);
         }
-
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            view.Article = articleService.Get(id);
+            view.Article = articleService.GetArticleByID(id);
             if (view == null)
             {
                 return HttpNotFound();
             }
             return View(view);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Article article)
         {
             if (ModelState.IsValid)
             {
-                articleService.Update(article);
+                articleService.UpdateArticle(article);
                 return RedirectToAction("Index");
             }
             return View(view);
         }
-
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-           view.Article = articleService.Get(id);
+            view.Article = articleService.GetArticleByID(id);
             if (view == null)
             {
                 return HttpNotFound();
             }
             return View(view);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-             articleService.Delete(id);
+            articleService.DeleteArticle(id);
+            return RedirectToAction("Index");
+        }
+        [Authorize]
+        public ActionResult DeleteUser(string id)
+        {
+            accountService.DeleteUser(id);
+            model.ApplicationUsers = accountService.GetListAdmins();
             return RedirectToAction("Index");
         }
     }

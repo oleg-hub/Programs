@@ -1,46 +1,47 @@
-﻿@model Blog.ViewModels.ArticleViewModel
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Статьи</h2>
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+{
+    @Html.AntiForgeryToken()
 
-<p>
-    @Html.ActionLink("Создать новую запись", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Article.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article.CreationDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.Articles) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Читать", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">@Blog.LocalResource.Resource.Logoff</a></li>
+    </ul>
 }
 
-</table>
+<div class="tabsLink">
+    <a href="#articleTab">@Blog.LocalResource.Resource.Articles</a>
+    <a href="#adminTab">@Blog.LocalResource.Resource.Admins</a>
+</div>
+<br />
+<a class="tabs" id="articleTab"></a>
+<div class="tab">
+    <br>
+    <a href="/Admin/Create" class="btn btn-success btn-lg">@Blog.LocalResource.Resource.CreateArticle</a>
+
+    <div id="example">
+        <div id="articleGrid"></div>
+    </div>
+</div>
+
+<a class="tabs" id="adminTab"></a>
+<div class="tab">
+    <br />
+    <a href="~/Account/Register" class=" btn btn-primary">@Blog.LocalResource.Resource.RegisterAdmin</a>
+    <div id="example">
+        <div id="grid"></div>
+    </div>
+</div>
+
+<input type="hidden" id="Resource_Edit" value="@Blog.LocalResource.Resource.Edit">
+<input type="hidden" id="Resource_Delete" value="@Blog.LocalResource.Resource.Delete">
+<input type="hidden" id="Resource_Title" value="@Blog.LocalResource.Resource.Title">
+<input type="hidden" id="Resource_Text" value="@Blog.LocalResource.Resource.Text">
+<input type="hidden" id="Resource_CreationDate" value="@Blog.LocalResource.Resource.CreationDate">
+<input type="hidden" id="Resource_UserName" value="@Blog.LocalResource.Resource.UserName">
+<input type="hidden" id="Resource_Email" value="@Blog.LocalResource.Resource.Email">
+
+<script src="~/Scripts/App/AdminScripts/article-list_kendo.js"></script>
+<script src="~/Scripts/App/AdminScripts/admin-list_kendo.js"></script>

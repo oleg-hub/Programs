@@ -1,50 +1,45 @@
-﻿@model Blog.ViewModels.ArticleViewModel
+﻿@model Blog.ViewModels.EntitiesViewModels
 
 @{
-    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Редактирование</h2>
-
+<h2>@Blog.LocalResource.Resource.Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Article</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Article.Id)
 
+    <div class="form-horizontal">
+        <hr />
         <div class="form-group">
-            @Html.LabelFor(model => model.Article.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                <strong>@Blog.LocalResource.Resource.Title</strong>
+            </div>
+            @Html.HiddenFor(model => model.Article.Id)
+            @Html.HiddenFor(model => model.Article.CreationDate)
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Article.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Article.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Article.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Article.Text, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Article.Text, "", new { @class = "text-danger" })
+            <div class="col-md-2">
+                <strong>@Blog.LocalResource.Resource.Text</strong>
+            </div>
+            <div class="col-xs-5">
+                @Html.TextAreaFor(model => model.Article.Text, new { htmlAttributes = new { @class = "form-control" }, cols = 100, rows = 18 })
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" class="btn btn-primary">@Blog.LocalResource.Resource.Save</button>
+                <a href="/Admin/Index" class="btn btn-warning">@Blog.LocalResource.Resource.ReturnToArticles</a>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Вернуться к списку", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

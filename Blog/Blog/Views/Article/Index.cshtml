@@ -1,19 +1,71 @@
-﻿@model List<Blog.ViewModels.ArticleViewModel>
+﻿@model List<Blog.ViewModels.EntitiesViewModels>
 
-<div>
-    <h3>Блог</h3>
-    <br />
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@foreach (var a in Model)
+{
+    <div class="box">
+        <h2 class="vid-name"> @Html.ActionLink(@a.Article.Title, "ReadArticle", "Article", new { id = @a.Article.Id }, null)</h2>
+        <div class="info">
+            <h5>By Kelvin</h5>
+            <span><i class="fa fa-calendar"></i> @a.Article.CreationDate</span>
+            <span><i class="fa fa-comment"></i> 0 Comments</span>
+            <span><i class="fa fa-heart"></i>1,200</span>
+            <ul class="list-inline">
+                <li><a href="#">Rate</a></li>
+                <li> - </li>
+                <li>
+                    <span class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="wrap-vid">
+            <div class="zoom-container">
+                <div class="zoom-caption">
+                </div>
+                <img src="~/Content/images/4.jpg" />
+            </div>
+            <p>
+                @if (@a.Article.Text.Length - 1 >= 600)
+                {
+                    @a.Article.Text.Substring(0, 600)@Html.ActionLink(@Blog.LocalResource.Resource.Read, "ReadArticle", "Article", new { id = @a.Article.Id }, null)
+                }
+                else
+                {
+                    @a.Article.Text@Html.ActionLink(@Blog.LocalResource.Resource.Read, "ReadArticle", "Article", new { id = @a.Article.Id }, null)
+                }
+            </p>
+        </div>
+    </div>
+    <hr class="line">
+}
+
+<div class="box">
+    <center>
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </center>
 </div>
-
-<table class="distance">
-
-
-    @foreach (var a in Model)
-    {
-        <tr>
-            <td><p>@a..Title</p></td>
-            <td><p>@a..CreationDate</p></td>
-            <td><p><a href="/Article/Read/@a.Article.Id">Читать</a></p></td>
-        </tr>
-    }
-</table>
