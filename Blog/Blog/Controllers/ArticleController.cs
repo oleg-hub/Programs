@@ -46,7 +46,6 @@ namespace Blog.Web.Controllers
             }
             model.Comments = commentService.GetComments(model.Article.Id);
             return PartialView(model);
-
         }
 
         public ActionResult DeleteComment(string id, string articleId)

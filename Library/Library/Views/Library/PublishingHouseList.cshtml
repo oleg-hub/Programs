@@ -1,0 +1,36 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+
+<center><h1>Publishing Houses</h1></center><br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name of publishing house</th>
+            <th>Year of establishment</th>
+            <th>Books</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var house in Model.PublishingHouses)
+            {
+            <tr>
+                <td>
+                    <a href="/Library/ShowLibraryUnit/@house.Id">
+                        @house.Name
+                    </a>
+                </td>
+                <td>
+                    @house.YearOfEstablishment
+                </td>
+                <td>
+                    @foreach (var book in @house.Books)
+                    {
+                        <p>@book.Title</p>
+                    }
+               
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

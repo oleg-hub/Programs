@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Blog.Entities
 {
     public class Article : BaseEntity

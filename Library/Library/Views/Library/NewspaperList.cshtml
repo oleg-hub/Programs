@@ -1,0 +1,31 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+
+<center><h1>Newspapers</h1></center><br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Newspaper title</th>
+            <th>Quantity of articles</th>
+            <th>Chief editor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var newspaper in Model.Newspapers)
+            {
+            <tr>
+                <td>
+                    <a href="/Library/ShowLibraryUnit/@newspaper.Id">
+                        @newspaper.Title
+                    </a>
+                </td>
+                <td>
+                    @newspaper.QuantityOfArticles
+                </td>
+                <td>
+                @newspaper.ChiefEditor
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

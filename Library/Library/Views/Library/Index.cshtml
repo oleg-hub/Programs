@@ -1,0 +1,179 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+@{
+    Layout = "~/Views/Shared/_BookLayout.cshtml";
+}
+
+<div id="fh5co-feature-product" class="fh5co-section-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section">
+                <h3>A good book - it is a gift bequeathed by the author to the human race</h3>
+                <p>Joseph Addison</p>
+            </div>
+        </div>
+        @if (Model.Books != null)
+        {
+            <div class="row">
+                @{Html.RenderPartial("BookList");}
+            </div>
+
+                    }
+        @if (Model.Magazines != null)
+            {
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+                <br />
+            </div>
+            <div class="row">
+                @{Html.RenderPartial("MagazineList");}
+            </div>
+
+                    }
+        @if (Model.Brochures != null)
+        {
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+                <br />
+            </div>
+            <div class="row">
+                @{Html.RenderPartial("BrochureList");}
+            </div>
+                    }
+        @if (Model.Newspapers != null)
+        {
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+                <br />
+            </div>
+            <div class="row">
+                @{Html.RenderPartial("NewspaperList");}
+            </div>
+                    }
+        @if (Model.PublishingHouses != null)
+        {
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+                <br />
+            </div>
+            <div class="row">
+                @{Html.RenderPartial("PublishingHouseList");}
+            </div>
+                    }
+
+        <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm("MagazineList", "Library", FormMethod.Post, new { id = "formforbook", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <label class="control-label">Magazine title</label>
+                @Html.TextBox("Title", "", new { @class = "form-control" })
+                <label class="control-label">Magazine number</label>
+                @Html.TextBox("MagazineNumber", "", new { @class = "form-control" })
+                <br />
+                <div class="file_upload">
+                    <button type="button" class="buttonforfile">Select</button>
+                    <input type="file">
+                    <div>No file</div>
+                    <input type="file" accept="image/x-png, image/gif, image/jpeg" id="uploadImage" name="uploadImage" />
+                </div>  <br />
+                <button id="signupSubmit" class="btn btn-info btn-block">Add new magazine </button><br />
+            }
+        </div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm("BrochureList", "Library", FormMethod.Post, new { id = "formforbook" }))
+            {
+                @Html.AntiForgeryToken()
+                <label class="control-label">Brochure title</label>
+                @Html.TextBox("Title", "", new { @class = "form-control" })
+                <label class="control-label">Brochure number</label>
+                @Html.TextBox("BrochureNumber", "", new { @class = "form-control" })
+                <label class="control-label">Cover type</label>
+                @Html.DropDownList("CoverType",
+                EnumHelper.GetSelectList(typeof(Library.Entities.enums.CoverType)),
+                new { @class = "form-control" })
+                <br />
+                <button id="signupSubmit" class="btn btn-info btn-block">Add new brochure </button><br />
+            }
+        </div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm("NewspaperList", "Library", FormMethod.Post, new { id = "formforbook" }))
+            {
+                @Html.AntiForgeryToken()
+                <label class="control-label">Newspaper title</label>
+                @Html.TextBox("Title", "", new { @class = "form-control" })
+                <label class="control-label">Quantity of articles</label>
+                @Html.TextBox("QuantityOfArticles", "", new { @class = "form-control" })
+                <label class="control-label">Chief editor</label>
+                @Html.TextBox("ChiefEditor", "", new { @class = "form-control" })
+                <br />
+                <button id="signupSubmit" class="btn btn-info btn-block">Add new newspaper </button><br />
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-md-push-2 col-md-4">
+                @using (Html.BeginForm("BookList", "Library", FormMethod.Post, new { id = "formforbook", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <label class="control-label">Book title</label>
+                    @Html.TextBox("Title", "", new { @class = "form-control" })
+                    <label class="control-label">Autor</label>
+                    @Html.TextBox("Autor", "", new { @class = "form-control" })
+                    <label class="control-label">Year</label>
+                    @Html.TextBox("Year", "", new { @class = "form-control" })
+                    <label class="control-label">Book cover</label>
+
+                    <div class="file_upload">
+                        <button type="button" class="buttonforfile">Select</button>
+                        <input type="file">
+                        <div>No file</div>
+                        <input type="file" accept="image/x-png, image/gif, image/jpeg" id="uploadImage" name="uploadImage" />
+                    </div>  <br />
+
+                    @Html.ListBox("PublishingHouses", Model.MultiSelectListPublishingHouses as MultiSelectList,
+                    new { @class = "dropdownlist", id = "publishingHouses", multiple = "multiple", size = "4" })
+                    <br />
+                    <button id="signupSubmit" class="btn btn-info btn-block">Add new book</button><br />
+                }
+            </div>
+
+            <div class="col-md-push-2 col-md-4">
+                @using (Html.BeginForm("PublishingHouseList", "Library", FormMethod.Post, new { id = "formforbook" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <label class="control-label">Name of Publishing House</label>
+                    @Html.TextBox("Name", "", new { @class = "form-control" })
+                    <label class="control-label">Year of establishment</label>
+                    @Html.TextBox("YearOfEstablishment", "", new { @class = "form-control" })
+                    <label class="control-label">Choose a books</label>
+                            @Html.ListBox("Books", Model.MultiSelectListBooks as MultiSelectList,
+                            new { @class = "dropdownlist", id = "books", multiple = "multiple", size = "7" })
+                            <br />
+                            <button id="signupSubmit" class="btn btn-info btn-block">Add new publishing house </button>
+                            <br />
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section"></div>
+            <br />
+            <div class="text-center">
+                @using (Ajax.BeginForm("GroupOfEntities", "Library", new AjaxOptions { UpdateTargetId = "GroupOfEntities" }))
+            {
+                    @Html.DropDownList("nameOfEntity",
+                EnumHelper.GetSelectList(typeof(Library.Entities.enums.AllEntities)),
+                new { @class = "dropdownlist" })
+                    <input type="submit" class="btn" value="Select" />
+                }
+                <br />
+                <div id="GroupOfEntities">
+                    @{Html.RenderPartial("GroupOfEntities");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

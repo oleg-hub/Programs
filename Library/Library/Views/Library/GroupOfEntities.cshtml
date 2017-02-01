@@ -1,0 +1,87 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+
+<div id="searchresults">
+    <table id="example" cellspacing="0" class="display table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Creation date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model.Books != null)
+            {
+                foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>
+                            @book.Title
+                        </td>
+                        <td>
+                            <p>book</p>
+                        </td>
+                        <td>
+                            @book.CreationDate.ToString("d")
+                        </td>
+                    </tr>
+                }
+            }
+            @if (Model.Magazines != null)
+            {
+                foreach (var magazine in Model.Magazines)
+                {
+                    <tr>
+                        <td>
+                            @magazine.Title
+                        </td>
+                        <td>
+                            <p>magazine</p>
+                        </td>
+                        <td>
+                            @magazine.CreationDate.ToString("d")
+                        </td>
+                    </tr>
+                }
+
+            }
+            @if (Model.Brochures != null)
+            {
+                foreach (var brochure in Model.Brochures)
+                {
+                    <tr>
+                        <td>
+                            @brochure.Title
+                        </td>
+                        <td>
+                            <p>brochure</p>
+                        </td>
+                        <td>
+                            @brochure.CreationDate.ToString("d")
+                        </td>
+                    </tr>
+                }
+            }
+            @if (Model.Newspapers != null)
+            {
+                foreach (var newspaper in Model.Newspapers)
+                {
+                    <tr>
+                        <td>
+                            @newspaper.Title
+                        </td>
+                        <td>
+                            <p>newspaper</p>
+                        </td>
+                        <td>
+                            @newspaper.CreationDate.ToString("d")
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <script src="~/Scripts/App/LibraryScripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/App/LibraryScripts/scriptForTable.js"></script>
+</div>

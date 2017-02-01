@@ -1,0 +1,32 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+
+<center><h1>Books</h1></center><br />
+@foreach (var book in Model.Books)
+{
+    <div class="col-md-3">
+        <div class="feature-text">
+            @if (book.Covers.Count != 0)
+            {
+                foreach (var cover in book.Covers)
+                {
+                    <a href="/Library/ShowLibraryUnit/@book.Id">
+                        @Html.Raw("<img class='coverView' src=\"data:image/jpeg;base64,"
+                        + Convert.ToBase64String(cover.CoverForModels) + "\" />")
+                    </a>
+                }
+            }
+            else
+            {
+                <a href="/Library/ShowLibraryUnit/@book.Id">
+                    <img class="coverView" src="~/Content/images/cover.png" />
+                </a>
+            }
+
+            <a href="/Library/ShowLibraryUnit/@book.Id">
+                <h3>@book.Title</h3>
+            </a>
+            <p>@book.Autor</p>
+            <p>@book.Year</p>
+        </div>
+    </div>
+}

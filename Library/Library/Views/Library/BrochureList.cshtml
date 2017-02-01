@@ -1,0 +1,33 @@
+﻿@model Library.ViewModels.ModelsListsViewModel
+
+<center><h1>Brochures</h1></center><br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Brochures title</th>
+            <th>№</th>
+            <th>Edition date</th>
+            <th>Cover type</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var brochure in Model.Brochures)
+            {
+            <tr>
+                <td>
+                    <a href="/Library/ShowLibraryUnit/@brochure.Id">
+                        @brochure.Title
+                    </a>
+                </td>
+                <td>
+                    @brochure.BrochureNumber
+                </td>
+                <td>
+                    @brochure.CreationDate.ToString("d")
+                </td>
+                <td>@brochure.CoverType</td>
+            </tr>
+            }
+        </tbody>
+    </table>
