@@ -14,5 +14,8 @@ namespace Library.DataAccess
         public DbSet<Cover> Covers { get; set; }
         public DbSet<Newspaper> Newspapers { get; set; }
         public DbSet<PublishingHouse> PublishingHouses { get; set; }
+        public DbSet<BookInPublishingHouse> BookInPublishingHouses { get; set; }
+        public DbSet<Publication> Publications { get; set; }
+
     }
 }

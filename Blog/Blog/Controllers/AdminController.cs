@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using Blog.Entities;
 using Blog.Services;
 using Blog.ViewModels;
-using Blog.Web.Models;
-using System.Web.Security;
-using Blog.DataAccess;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Blog.Web.Helper;
 
 namespace Blog.Web.Controllers
 {

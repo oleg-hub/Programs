@@ -164,19 +164,17 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\ImageProcessing.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BrochureController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MagazineController.cs" />
+    <Compile Include="Controllers\NewspaperController.cs" />
+    <Compile Include="Controllers\PublishingHouseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -191,17 +189,29 @@
     <Content Include="Content\images\cover.png" />
     <Content Include="Content\images\magazineCover.jpg" />
     <Content Include="Content\images\mainImage.jpg" />
+    <Content Include="Content\kendoCss\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendoCss\kendo.common-material.min.css" />
+    <Content Include="Content\kendoCss\kendo.common.min.css" />
+    <Content Include="Content\kendoCss\kendo.material.min.css" />
+    <Content Include="Content\kendoCss\kendo.material.mobile.min.css" />
+    <Content Include="Content\kendoCss\Material\loading-image.gif" />
+    <Content Include="Content\kendoCss\Material\sprite.png" />
     <Content Include="Content\style.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\App\LibraryScripts\clean-field.js" />
     <Content Include="Scripts\App\LibraryScripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\App\LibraryScripts\kendoTableForModels.js" />
     <Content Include="Scripts\App\LibraryScripts\scriptForTable.js" />
     <Content Include="Scripts\App\LibraryScripts\visible-element.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\kendoCss\images\kendoui.woff" />
+    <Content Include="fonts\icomoon\icomoon.woff" />
+    <Content Include="Content\commonCss\fonts\icomoon.woff" />
+    <Content Include="Content\commonCss\fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon\icomoon.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -209,6 +219,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.stellar.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -217,6 +228,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.waypoints.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
     <Content Include="Scripts\magnific-popup-options.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -239,27 +251,19 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_BookLayout.cshtml" />
     <Content Include="Views\Library\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Library\BookList.cshtml" />
     <Content Include="Views\Library\MagazineList.cshtml" />
-    <Content Include="Views\Library\ShowLibraryUnit.cshtml" />
     <Content Include="Views\Library\BrochureList.cshtml" />
     <Content Include="Views\Library\NewspaperList.cshtml" />
-    <Content Include="Views\Library\GroupOfEntities.cshtml" />
     <Content Include="Views\Library\PublishingHouseList.cshtml" />
+    <Content Include="Views\Book\EditBook.cshtml" />
+    <Content Include="Views\Magazine\EditMagazine.cshtml" />
+    <Content Include="Views\Brochure\EditBrochure.cshtml" />
+    <Content Include="Views\Newspaper\EditNewspaper.cshtml" />
+    <Content Include="Views\PublishingHouse\EditPublishingHouse.cshtml" />
+    <Content Include="Views\Library\ListOfModels.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

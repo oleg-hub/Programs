@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Library.Entities
 {
@@ -10,13 +9,10 @@ namespace Library.Entities
         public string Title { get; set; }
 
         public virtual ICollection<Cover> Covers { get; set; }
-        public virtual ICollection<PublishingHouse> PublishingHouses { get; set; }
 
         public Book()
         {
             Covers = new List<Cover>();
-            PublishingHouses = new List<PublishingHouse>();
-
         }
     }
 }

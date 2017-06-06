@@ -51,13 +51,16 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="BookInPublishingHouse.cs" />
     <Compile Include="Brochure.cs" />
     <Compile Include="Cover.cs" />
     <Compile Include="enums\AllEntities.cs" />
     <Compile Include="enums\CoverType.cs" />
+    <Compile Include="enums\Type.cs" />
     <Compile Include="Magazine.cs" />
     <Compile Include="Newspaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publication.cs" />
     <Compile Include="PublishingHouse.cs" />
   </ItemGroup>
   <ItemGroup>

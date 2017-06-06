@@ -15,7 +15,7 @@
             {
             <tr>
                 <td>
-                    <a href="/Library/ShowLibraryUnit/@house.Id">
+                    <a href="/PublishingHouse/EditPublishingHouse/@house.Id">
                         @house.Name
                     </a>
                 </td>
@@ -23,14 +23,25 @@
                     @house.YearOfEstablishment
                 </td>
                 <td>
-                    @foreach (var book in @house.Books)
-                    {
-                        <p>@book.Title</p>
+                    @{
+                        foreach (var booksInPublishingHouse in Model.BooksInPublishingHouse)
+                        {
+                            if (house.Id == booksInPublishingHouse.PublishingHouseId)
+                            {
+                                string bookId = booksInPublishingHouse.BookId;
+                                foreach (var book in Model.Books)
+                                {
+                                    if (bookId == book.Id)
+                                    {
+                                        <p>@book.Title</p>
+                                    }
+                                }
+                            }
+                        }
+
                     }
-               
                 </td>
             </tr>
-        }
+                        }
     </tbody>
 </table>
-

@@ -67,9 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LibraryViewModel\CurrentModelUnitViewModel.cs" />
+    <Compile Include="BookViewModel\BookViewModel.cs" />
+    <Compile Include="BrochureViewModel\BrochureViewModel.cs" />
     <Compile Include="LibraryViewModel\ModelsListsViewModel.cs" />
+    <Compile Include="LibraryViewModel\PublicationViewModel.cs" />
+    <Compile Include="MagazineViewModel\MagazineViewModel.cs" />
+    <Compile Include="NewspaperViewModel\NewspaperViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublishingHouseViewModel\PublishingHouseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">

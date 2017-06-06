@@ -13,6 +13,6 @@ namespace Library.ViewModels
         public List<PublishingHouse> PublishingHouses { get; set; }
         public MultiSelectList MultiSelectListBooks { get; set; }
         public MultiSelectList MultiSelectListPublishingHouses { get; set; }
-
+        public List<BookInPublishingHouse> BooksInPublishingHouse { get; set; }
     }
 }

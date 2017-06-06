@@ -9,7 +9,7 @@
             {
                 foreach (var cover in magazines.Covers)
                 {
-                    <a href="/Library/ShowLibraryUnit/@magazines.Id">
+                    <a href="/Magazine/EditMagazine/@magazines.Id">
                         @Html.Raw("<img class='coverView' src=\"data:image/jpeg;base64,"
                         + Convert.ToBase64String(cover.CoverForModels) + "\" />")
                     </a>
@@ -17,11 +17,11 @@
             }
             else
             {
-                <a href="/Library/ShowLibraryUnit/@magazines.Id">
+                <a href="/Magazine/EditMagazine/@magazines.Id">
                     <img class="coverView" src="~/Content/images/cover.png" />
                 </a>
             }
-            <a href="/Library/ShowLibraryUnit/@magazines.Id">
+            <a href="/Magazine/EditMagazine/@magazines.Id">
                 <h3>@magazines.Title</h3>
             </a>
             <p>@magazines.CreationDate.ToString("d")</p>
