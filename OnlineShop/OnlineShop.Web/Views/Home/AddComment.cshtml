@@ -1,0 +1,20 @@
+﻿@model OnlineShop.ViewModel.ProductViewModel
+
+
+@if (Model.Comments != null)
+{
+    foreach (var item in Model.Comments)
+    {
+        <div class="tab-pane fade active in" id="reviews">
+            <div class="col-sm-12">
+                <ul>
+                    <li><a href=""><i class="fa fa-user"></i>@item.UserName</a></li>
+                    <li><a href=""><i class="fa fa-clock-o"></i>@item.CreationDate.ToShortTimeString()</a></li>
+                    <li><a href=""><i class="fa fa-calendar-o"></i>@item.CreationDate.ToShortDateString()</a></li>
+                </ul>
+                <p>@item.Text</p>
+            </div>
+        </div>
+        <hr />
+    }
+}

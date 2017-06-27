@@ -1,0 +1,62 @@
+﻿@model List<OnlineShop.ViewModel.CartViewModel>
+
+
+<div class="table-responsive cart_info">
+    <table class="table table-condensed">
+        <thead>
+            <tr class="cart_menu">
+                <td class="image">Item</td>
+                <td class="description"></td>
+                <td class="price">Price</td>
+                <td class="quantity">Quantity</td>
+                <td class="total">Total</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+                <tr>
+                    <td class="cart_product productinfoincart">
+                        <a href="/Home/ProductDetails/@item.ProductId">
+                            @Html.Raw("<img class='picture' src=\"data:image/jpeg;base64,"
++ Convert.ToBase64String(item.Picture) + "\" />")
+                        </a>
+                    </td>
+                    <td class="cart_description">
+                        <h4><a href="">@item.Name</a></h4>
+                    </td>
+                    <td class="cart_price">
+                        <p>$@item.Price</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <p>@item.Quantity</p>
+                        @*<div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href=""> + </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href=""> - </a>
+                            </div>*@
+                    </td>
+                    <td class="cart_total">
+
+                        <p class="cart_total_price">$@item.TotalPriceOfProduct</p>
+                    </td>
+                    @using (Ajax.BeginForm("DeleteProductFromCart", new AjaxOptions { UpdateTargetId = "listOfProduct" }))
+                    {
+                        <td class="cart_delete">
+                            <input type="hidden" value="@item.Id" name="id" />
+                            <input type="submit" value="X" @*class="btn-default"*@ class="cart_quantity_delete" />
+                            @*<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>*@
+                        </td>
+                    }
+                </tr>
+          }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@

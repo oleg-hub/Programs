@@ -18,10 +18,7 @@ namespace Blog.DataAccess
         }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public static ApplicationContext Create()
-        {
-            return new ApplicationContext();
-        }
+       
     }
 
 }
