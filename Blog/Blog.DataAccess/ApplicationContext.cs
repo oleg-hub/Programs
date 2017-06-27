@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Blog.DataAccess
 {
-    public class ApplicationContext : IdentityDbContext<ApplicationUser> //, IApplicationContext
+    public class ApplicationContext : IdentityDbContext<ApplicationUser> // IApplicationContext
     {
         public ApplicationContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
