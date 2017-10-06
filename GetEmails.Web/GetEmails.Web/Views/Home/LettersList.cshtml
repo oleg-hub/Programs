@@ -1,0 +1,11 @@
+﻿@model GetEmails.Web.Models.LettersListViewModel
+
+@if (Model.Mails != null)
+{
+    foreach (var item in Model.Mails)
+    {
+        <h2>@item.Id</h2>
+        <h3>@item.InternalDate</h3>
+        <h5>@item.ETag</h5>
+    }
+}
